@@ -1,3 +1,29 @@
 site_name: pktvisor
 theme:
   name: material
+  features:
+    - navigation.tracking
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - search.suggest
+  icon:
+    repo: fontawesome/brands/github
+markdown_extensions:
+  - toc:
+      permalink: true
+plugins:
+  - search
+repo_url: https://github.com/ns1labs/pktvisor
+repo_name: ns1labs/pktvisor
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ns1labs/pktvisor
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/ns1labs/pktvisor
+    - icon: fontawesome/brands/slack
+      link: https://join.slack.com/t/ns1labs/shared_invite/zt-p0uzy9zq-ZgD~QkKQ9cWMSiI4DgJSaA
+    - icon: octicons/mail-24
+      link: "mailto:info@pktvisor.dev"
+
