@@ -1,4 +1,4 @@
-site_name: pktvisor
+site_name: pktvisor network observability
 theme:
   name: material
   features:
