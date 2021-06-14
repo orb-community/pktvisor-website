@@ -1,6 +1,8 @@
 site_name: pktvisor network observability
 theme:
   name: material
+  favicon: img/ORB-logo-ring.png
+  logo: img/ORB-logo-ring.png
   features:
     - navigation.tracking
     - navigation.instant
@@ -14,6 +16,12 @@ markdown_extensions:
       permalink: true
 plugins:
   - search
+nav:
+  - Home: 'index.md'
+  - About: 'about.md'
+  - Install: 'install.md'
+  - Resources: 'docs.md'
+  - Follow: 'contact.md'
 repo_url: https://github.com/ns1labs/pktvisor
 repo_name: ns1labs/pktvisor
 extra:
@@ -29,3 +37,4 @@ extra:
 google_analytics:
   - UA-41778111-8
   - auto
+copyright: Copyright &copy; 2021 <a href="https://ns1.com/labs">NS1</a>
