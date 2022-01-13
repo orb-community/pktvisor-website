@@ -2,13 +2,7 @@
 hide:
 - navigation
 ---
-# Resources 
-
-## Talks
-
-* [ICANN DNS Symposium](https://www.icann.org/ids) 2021 Talk [Recording](https://drive.google.com/file/d/14sDxmwvMV1wF_1cBUBv3qj29Hen_thea/view?usp=sharing) and [Slides](https://drive.google.com/file/d/1fEydsa-suUbE9fNHo87zY88mOmbeZviU/view)
-* [DNS-OARC](https://www.dns-oarc.net/) 2020 Talk [Recording](https://www.youtube.com/watch?v=PwEOePOvkug&list=PLCAxS3rufJ1cv93o5VK226HEHo25fv06M&index=3) (first talk) with [Slides](https://indico.dns-oarc.net/event/34/contributions/783/attachments/774/1328/pktvisor3-OARC-sweyrick.pdf)
-* O'reilly Velocity San Jose 2019 Talk [Recording](https://drive.google.com/file/d/1AjhbUjkXT5saBP6iYIZjoinYsiZ5LDaV/view?usp=sharing) with [Slides](https://docs.google.com/presentation/d/e/2PACX-1vR984fhii0Pso97RRjSFgZupknwQqf-XMhGuriT8HPHHiLlB1c4SnDtRnJtX66nxYv2GETk4ex81QiU/pub?start=false&loop=false&delayms=3000)
+# Documentation 
 
 ## Usage
 
@@ -16,7 +10,7 @@ hide:
 
 A collector agent should be installed on each node to be monitored.
 
-Current command line options are described with:
+Current command-line options are described with:
 
 ```
 docker run --rm ns1labs/pktvisor pktvisord --help
@@ -77,11 +71,10 @@ or
 
 ```
 
-### Command Line UI Usage
+### Command-Line UI Usage
 
-The command line UI (`pktvisor-cli`) connects directly to a pktvisord agent to visualize the real time stream
-summarization, which is by default a sliding 5 minute time window. It can also connect to an agent running on a remote
-host.
+The command-line UI (`pktvisor-cli`) connects directly to a pktvisord agent to visualize the real-time stream
+summarization, which is by default a sliding 5-minute time window. It can also connect to an agent running on a remote host.
 
 ```
 docker run --rm ns1labs/pktvisor pktvisor-cli -h
@@ -110,8 +103,7 @@ Usage:
 
 ### pcap File Analysis
 
-`pktvisor-pcap` is a tool that can statically analyze prerecorded packet capture files. It takes many of the same
-options, and does all of the same analysis, as the live agent version.
+`pktvisor-pcap` is a tool that can statically analyze prerecorded packet capture files. It takes many of the same options and does all of the same analysis as the live agent version.
 
 ```
 docker run --rm ns1labs/pktvisor pktvisor-pcap --help
@@ -146,8 +138,7 @@ docker run --rm ns1labs/pktvisor pktvisor-pcap --help
 
 ```
 
-You can use the docker container by passing in a volume referencing the directory containing the pcap file. The standard
-output will contain the JSON summarization output, which you can capture or pipe into other tools, for example:
+You can use the docker container by passing in a volume referencing the directory containing the pcap file. The standard output will contain the JSON summarization output, which you can capture or pipe into other tools, for example:
 ```
 
 $ docker run --rm -v /pktvisor/src/tests/fixtures:/pcaps ns1labs/pktvisor pktvisor-pcap /pcaps/dns_ipv4_udp.pcap | jq .
@@ -267,22 +258,17 @@ dns_rates_total{instance="node",quantile="0.95"} 4
 You can set the `instance` label by passing `--prom-instance ID`
 
 If you are interested in centralized collection
-using [remote write](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage), including to
-cloud providers, there is a [docker image available](https://hub.docker.com/r/ns1labs/pktvisor-prom-write) to make this
-easy. See [centralized_collection/prometheus](centralized_collection/prometheus) for more.
+using [remote write](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage), including to cloud providers, there is a [docker image available](https://hub.docker.com/r/ns1labs/pktvisor-prom-write) to make this easy. See [centralized_collection/prometheus](https://github.com/ns1labs/pktvisor/tree/develop/centralized_collection/prometheus) for more information.
 
 ### REST API
 
-REST API documentation is available in [OpenAPI Format](https://app.swaggerhub.com/apis/ns1labs/pktvisor/3.0.0-oas3)
+REST API documentation is available in [OpenAPI Format](https://app.swaggerhub.com/apis/ns1labs/pktvisor/3.0.0-oas3).
 
-Please note that the administration control plane API (`--admin-api`) is currently undergoing heavy iteration and so is
-not yet documented. If you have a use case that requires the administration API, please [contact us](#contact-us) to
-discuss.
+Please note the administration control plane API (`--admin-api`) is currently undergoing heavy iteration thus not yet documented. If you have a use case that requires the administration API, please [contact us](https://pktvisor.dev/contact/) to discuss.
 
 ### Advanced Agent Example
 
-Starting the collector agent from Docker with MaxmindDB GeoIP/GeoASN support and using the Host option to identify
-ingress and egress traffic:
+To start the collector agent from Docker with MaxmindDB GeoIP/GeoASN support using the Host option to identify ingress and egress traffic:
 
 ```
 docker run --rm --net=host -d \
@@ -306,8 +292,6 @@ The same command with AppImage and logging to syslog:
 
 ### Further Documentation
 
-We recognize the value of first class documentation, and we are working on further documentation including expanded and
-updated REST API documentation, internal documentation for developers of input and handler modules (and those who want
-to contribute to pktvisor), and a user manual.
+We recognize the value of first-class documentation, and we are improving and augmenting ours including expanded and updated REST API docs, internal documentation for developers of input and handler modules (and those who want to contribute to pktvisor), and a user manual.
 
-Please [contact us](#contact-us) if you have any questions on installation, use, or development.
+Please [contact us](https://pktvisor.dev/contact/) if you have any questions on installation, use, or development.
