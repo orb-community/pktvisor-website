@@ -18,9 +18,9 @@ plugins:
   - search
 nav:
   - Home: 'index.md'
-  - Install: 'install.md'
-  - Resources: 'docs.md'
-  - Follow: 'contact.md'
+  - Installation: 'install.md'
+  - Documentation: 'docs.md'
+  - Community: 'contact.md'
 repo_url: https://github.com/ns1labs/pktvisor
 repo_name: ns1labs/pktvisor
 extra:
