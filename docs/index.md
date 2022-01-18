@@ -5,22 +5,13 @@ hide:
 - tags
 ---
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-![pktvisor](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor-header.png)
-
-# Open Source Observability Agent <a class="github-button" href="https://github.com/ns1labs/pktvisor" data-size="large" aria-label="Star ns1labs/pktvisor on GitHub">Star</a>
-
----
 <h1></h1>
 <img src="img/pktvisor-header.png" alt="Orb" width="500"/>
-![Orb Overview](/img/pktvisor-diagram.png){ align=right width="450" }
+<img src="img/pktvisor-diagram.png" alt="Orb" width="500"/>
 
 # Open-source observability agent
 
-[Get Started with pktvisor](install/){ .md-button .md-button--primary }
-
-<br> <br> <br> <br>
-<br> <br> <br> <br>
+[Get Started with pktvisor](install/)
 
 ***
 
