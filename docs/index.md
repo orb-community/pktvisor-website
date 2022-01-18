@@ -1,6 +1,8 @@
 ---
 hide:
 - navigation
+- toc
+- tags
 ---
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -8,7 +10,19 @@ hide:
 
 # Open Source Observability Agent <a class="github-button" href="https://github.com/ns1labs/pktvisor" data-size="large" aria-label="Star ns1labs/pktvisor on GitHub">Star</a>
 
-![Image 1 of Grafana Dash](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor-grafana-screenshot1.png)
+---
+<h1></h1>
+<img src="img/pktvisor-header.png" alt="Orb" width="500"/>
+![Orb Overview](/img/pktvisor-diagram.png){ align=right width="450" }
+
+# Open-source observability agent
+
+[Get Started with pktvisor](install/){ .md-button .md-button--primary }
+
+<br> <br> <br> <br>
+<br> <br> <br> <br>
+
+***
 
 ## What is pktvisor?
 
@@ -37,5 +51,6 @@ engineering, and ongoing operations.
 These screenshots display both the [command line](golang/) and [centralized views](centralized_collection/) of
 the [Network](src/handlers/net) and [DNS](src/handlers/dns) stream processors, and the types of summary information provided:
 
+![Image 1 of Grafana Dash](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor-grafana-screenshot1.png)
 ![Image of CLI UI](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor3-cli-ui-screenshot.png)
 ![Image 2 of Grafana Dash](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor-grafana-screenshot2.png)
