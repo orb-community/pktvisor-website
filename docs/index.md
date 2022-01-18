@@ -5,9 +5,9 @@ hide:
 - tags
 ---
 
+<h1></h1>
 <img src="img/pktvisor-header.png" alt="Orb" width="500"/>
-
-<img src="img/pktvisor-diagram.png" alt="Orb" width="500"/>
+<img src="img/pktvisor-diagram.png" alt="Orb" width="400"/>
 
 # Open-source observability agent
 
