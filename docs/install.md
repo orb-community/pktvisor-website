@@ -12,7 +12,7 @@ agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap file ana
 
 1. *Pull the container*
 
-       docker pull ns1labs/pktvisor
+        docker pull ns1labs/pktvisor
  
 
 2. *Start the collector agent*
