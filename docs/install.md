@@ -21,11 +21,9 @@ agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap file ana
 
         docker run --net=host -d ns1labs/pktvisor pktvisord eth0
 
-This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and
-the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires docker host networking_ to observe traffic outside the container, and
-that [currently only Linux supports host networking](https://docs.docker.com/network/host/).
+ This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires docker host networking_ to observe traffic outside the container, and that [currently only Linux supports host networking](https://docs.docker.com/network/host/).
 
-If the container does not stay running, check the `docker logs` output.
+ If the container does not stay running, check the `docker logs` output.
 
 3. *Run the command-line UI*
 
