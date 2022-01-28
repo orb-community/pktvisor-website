@@ -3,29 +3,29 @@ hide:
 - navigation
 ---
 
-# Install
+# Installation
 
-### Docker
+## Docker
 
 Get started quickly with pktvisor via the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector
 agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap file analyzer (`pktvisor-pcap`). You will specify which tool to operate when running the container.
 
-1. *Pull the container*
+- *Pull the container*
 
 
         docker pull ns1labs/pktvisor
  
 
-2. *Start the collector agent*
+- *Start the collector agent*
 
 
         docker run --net=host -d ns1labs/pktvisor pktvisord eth0
 
- This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires docker host networking_ to observe traffic outside the container, and that [currently only Linux supports host networking](https://docs.docker.com/network/host/).
+This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires docker host networking_ to observe traffic outside the container, and that [currently only Linux supports host networking](https://docs.docker.com/network/host/).
 
  If the container does not stay running, check the `docker logs` output.
 
-3. *Run the command-line UI*
+- *Run the command-line UI*
 
 
         docker run -it --rm --net=host ns1labs/pktvisor pktvisor-cli
@@ -60,10 +60,10 @@ For example, to visualize the running agent started above with the pktvisor comm
 
 Note that when running the AppImage version of the agent, you may want to use the `-d` argument to daemonize (run in the background), and either the `--log-file` or `--syslog` argument to record logs.
 
-Also see [Advanced Agent Example](#advanced-agent-example).
+Also see [Advanced Agent Example](https://pktvisor.dev/docs/#advanced-agent-example).
 
-### Other Platforms
+## Other Platforms
 
-If you are unable to use the Docker container or the Linux binary, then you will have to build your own executable. Please see the [Build](#build) section below.
+If you are unable to use the Docker container or the Linux binary, then you will have to build your own executable. Please see the [Build](https://github.com/ns1labs/pktvisor#build) section on GitHub.
 
 If you have a preferred installation method for which you would like to see support, [please create an issue](https://github.com/ns1/pktvisor/issues/new).
