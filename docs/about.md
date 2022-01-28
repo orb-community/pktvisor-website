@@ -11,11 +11,6 @@ NS1 created **pktvisor** to address its own need for more visibility across its 
 
 By efficiently summarizing and collecting key metrics at all of your edge locations, you gain a deep understanding of traffic patterns in real time, enabling rich visualization and fast automation which further increase resiliency and performance.
 
-These screenshots display both the [command line](golang/) and [centralized views](centralized_collection/) of the [Network](src/handlers/net) and [DNS](src/handlers/dns) stream processors, and the types of summary information provided:
-
-![Image of CLI UI](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor3-cli-ui-screenshot.png)
-![Image 2 of Grafana Dash](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor-grafana-screenshot2.png)
-
 # pktvisor + Orb
 The resource-efficient, side-car style pktvisor observability agent performs edge analysis on network data streams. Via the open-source [Orb](https://getorb.io/), you can decide what data to extract from which agents.
 
