@@ -7,33 +7,32 @@ hide:
 
 ### Docker
 
-One of the easiest ways to get started with pktvisor is to use the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector
-agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap file analyzer (`pktvisor-pcap`). When running the container, you specify which tool to run.
+Get started quickly with pktvisor via the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector
+agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap file analyzer (`pktvisor-pcap`). You will specify which tool to operate when running the container.
 
 1. *Pull the container*
+
 
         docker pull ns1labs/pktvisor
  
 
 2. *Start the collector agent*
 
-This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and
-the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires docker host networking_ to observe traffic outside the container, and
-that [currently only Linux supports host networking](https://docs.docker.com/network/host/):
-
 
         docker run --net=host -d ns1labs/pktvisor pktvisord eth0
 
+This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and
+the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires docker host networking_ to observe traffic outside the container, and
+that [currently only Linux supports host networking](https://docs.docker.com/network/host/).
 
 If the container does not stay running, check the `docker logs` output.
 
 3. *Run the command-line UI*
 
-After the agent is running, you can observe results locally with the included command-line UI. This command will run the UI (`pktvisor-cli`) in the foreground and exit after pressing `Ctrl+C`. It connects to the running agent locally using the built-in [REST API](https://app.swaggerhub.com/apis/ns1labs/pktvisor/3.0.0-oas3).
-
 
         docker run -it --rm --net=host ns1labs/pktvisor pktvisor-cli
 
+After the agent is running, you can observe results locally with the included command-line UI. This command will run the UI (`pktvisor-cli`) in the foreground and exit after pressing `Ctrl+C`. It connects to the running agent locally using the built-in [REST API](https://app.swaggerhub.com/apis/ns1labs/pktvisor/3.0.0-oas3).
 
 ### Linux Static Binary (AppImage)
 
