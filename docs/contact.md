@@ -5,13 +5,13 @@ hide:
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 ## Contribute
-pktvisor is an open source project founded at [NS1 Labs](https://ns1.com/labs). Work with us on [GitHub](https://github.com/ns1labs/pktvisor) and star the project to show your interest!
+**pktvisor** is an open-source project founded at [NS1 Labs](https://ns1.com/labs). Work with us on [GitHub](https://github.com/ns1labs/pktvisor) and star the project to show your interest.
 
 <a class="github-button" href="https://github.com/ns1labs/pktvisor" data-size="large" aria-label="Star ns1labs/pktvisor on GitHub">Star on GitHub</a>
 
 ## Contact
 
-We are very interested in hearing about your use cases, feature requests, and other feedback.
+We want to hear about your use cases, feature requests, and other feedback. Please open *Pull Requests* against the `develop` branch. If you are considering a larger contribution, please contact us to discuss your design via the following options:
 
 * Sign up to get pktvisor and Orb [updates](https://resources.ns1.com/get-orb-updates)
 * File an [issue](https://github.com/ns1labs/pktvisor/issues/new)
@@ -20,6 +20,8 @@ We are very interested in hearing about your use cases, feature requests, and ot
 * Start a [discussion](https://github.com/ns1labs/pktvisor/discussions)
 * Join us on [Slack](https://join.slack.com/t/ns1labs/shared_invite/zt-qqsm5cb4-9fsq1xa~R3h~nX6W0sJzmA)
 * Send mail to [info@pktvisor.dev](mailto:info@pktvisor.dev)
+
+See the [NS1 Contribution Guidelines](https://github.com/ns1/community) for more information.
 
 ## Explore
 
