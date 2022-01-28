@@ -36,9 +36,6 @@ The [stream processor system](src/handlers) includes full application-level anal
 * Set Cardinality
 * GeoIP
 
-Born at [NS1 Labs](https://ns1.com/labs), pktvisor has its origins in observability of critical internet infrastructure in support of DDoS protection, traffic
-engineering, and ongoing operations.
-
 These screenshots display both the [command line](golang/) and [centralized views](centralized_collection/) of
 the [Network](src/handlers/net) and [DNS](src/handlers/dns) stream processors, and the types of summary information provided:
 
