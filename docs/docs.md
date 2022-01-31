@@ -4,9 +4,7 @@ hide:
 ---
 # Documentation 
 
-## Usage
-
-### Agent Usage
+## Agent Usage
 
 A collector agent should be installed on each node to be monitored.
 
@@ -71,7 +69,7 @@ or
 
 ```
 
-### Configuration File Usage
+## Configuration File Usage
 Configure `pktvisord` at startup by YAML configuration file with the `--config option`. The configuration file can configure all options available on the command line and define [Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md) and [Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md). All sections are optional.
 
 Note that Policies and Taps may also be maintained in real-time via [REST API](https://github.com/ns1labs/pktvisor#rest-api).
@@ -132,7 +130,7 @@ docker run -v /local/pktvisor:/usr/local/pktvisor/ --net=host \
 ```
 
 
-### Command-Line UI Usage
+## Command-Line UI Usage
 
 The command-line UI (`pktvisor-cli`) connects directly to a pktvisord agent to visualize the real-time stream
 summarization, which is by default a sliding 5-minute time window. It can also connect to an agent running on a remote host.
@@ -162,7 +160,7 @@ Usage:
 
 ```
 
-### pcap and dnstap File Analysis
+## pcap and dnstap File Analysis
 
 `pktvisor-pcap` and `pktvisor-dnstap` are tools that can statically analyze prerecorded packet capture and dnstap files. 
 
@@ -264,9 +262,9 @@ processed 140 packets
 ...     
 ```
 
-### Metrics Collection
+## Metrics Collection
 
-#### Metrics from the REST API
+### Metrics from the REST API
 
 The metrics are available from the agent in JSON format via the [REST API](#rest-api).
 
@@ -301,7 +299,7 @@ interval = "60"
 
 ```
 
-#### Prometheus Metrics
+### Prometheus Metrics
 
 `pktvisord` also has native Prometheus support, which you can enable by passing `--prometheus`. The metrics are
 available for collection at the standard `/metrics` endpoint.
@@ -325,13 +323,13 @@ You can set the `instance` label by passing `--prom-instance ID`
 If you are interested in centralized collection
 using [remote write](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage), including to cloud providers, there is a [docker image available](https://hub.docker.com/r/ns1labs/pktvisor-prom-write) to make this easy. See [centralized_collection/prometheus](https://github.com/ns1labs/pktvisor/tree/develop/centralized_collection/prometheus) for more information.
 
-### REST API
+## REST API
 
 REST API documentation is available in [OpenAPI Format](https://app.swaggerhub.com/apis/ns1labs/pktvisor/3.0.0-oas3).
 
 Please note the administration control plane API (`--admin-api`) is currently undergoing heavy iteration thus not yet documented. If you have a use case that requires the administration API, please [contact us](https://pktvisor.dev/contact/) to discuss.
 
-### Advanced Agent Example
+## Advanced Agent Example
 
 To start the collector agent from Docker with MaxmindDB GeoIP/GeoASN support using the Host option to identify ingress and egress traffic:
 
@@ -355,7 +353,7 @@ The same command with AppImage and logging to syslog:
     eth0
 ```
 
-### Further Documentation
+## Further Documentation
 
 We recognize the value of first-class documentation, and we are improving and augmenting ours including expanded and updated REST API docs, internal documentation for developers of input and handler modules (and those who want to contribute to pktvisor), and a user manual.
 
