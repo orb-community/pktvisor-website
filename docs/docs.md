@@ -71,6 +71,67 @@ or
 
 ```
 
+### Configuration File Usage
+pktvisord may be configured at startup by YAML configuration file with the `--config option`. The configuration file can configure all options that are available on the command line, as well as defining [Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md) and [Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md). All sections are optional.
+
+Note that Policies and Taps may also be maintained in real-time via [REST API](https://github.com/ns1labs/pktvisor#rest-api).
+
+```
+version: "1.0"
+
+visor:
+  # optionally define global configuration (see command line options)
+  config:
+    verbose: true
+    log_file: /tmp/pktvisor_output.log
+  # optionally define taps
+  taps:
+    default_pcap:
+      input_type: pcap
+      config:
+        iface: eth0
+    unix_dnstap:
+      input_type: dnstap
+      config:
+        socket: "/tmp/dnstap.sock"
+    tcp_dnstap:
+      input_type: dnstap
+      config:
+        tcp: "127.0.0.1:53053"
+  # optionally define policies
+  policies:
+    mysocket:
+      kind: collection
+      input:
+        tap: unix_dnstap
+        input_type: dnstap
+      handlers:
+        modules:
+          default_net:
+            type: net
+          default_dns:
+            type: dns
+    mytcp:
+      kind: collection
+      input:
+        tap: tcp_dnstap
+        input_type: dnstap
+      handlers:
+        modules:
+          default_net:
+            type: net
+          default_dns:
+            type: dns
+```
+
+If running in a Docker container, you must mount the configuration file into the container. For example, if the configuration file is on the host at `/local/pktvisor/agent.yaml`, you can mount it into the container and use it with this command:
+
+```
+docker run -v /local/pktvisor:/usr/local/pktvisor/ --net=host \
+      ns1labs/pktvisor pktvisord --config /usr/local/pktvisor/agent.yaml
+```
+
+
 ### Command-Line UI Usage
 
 The command-line UI (`pktvisor-cli`) connects directly to a pktvisord agent to visualize the real-time stream
