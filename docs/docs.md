@@ -72,7 +72,7 @@ or
 ```
 
 ### Configuration File Usage
-pktvisord may be configured at startup by YAML configuration file with the `--config option`. The configuration file can configure all options that are available on the command line, as well as defining [Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md) and [Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md). All sections are optional.
+Configure `pktvisord` at startup by YAML configuration file with the `--config option`. The configuration file can configure all options available on the command line and define [Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md) and [Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md). All sections are optional.
 
 Note that Policies and Taps may also be maintained in real-time via [REST API](https://github.com/ns1labs/pktvisor#rest-api).
 
@@ -162,9 +162,13 @@ Usage:
 
 ```
 
-### pcap File Analysis
+### pcap and dnstap File Analysis
 
-`pktvisor-pcap` is a tool that can statically analyze prerecorded packet capture files. It takes many of the same options and does all of the same analysis as the live agent version.
+`pktvisor-pcap` and `pktvisor-dnstap` are tools that can statically analyze prerecorded packet capture and dnstap files. 
+
+pcap files can come from many sources, the most famous of which is [tcpdump](https://www.tcpdump.org/). dnstap files can be generated from most DNS server software that support dnstap logging, either directly or using a tool such as [golang-dnstap](https://github.com/dnstap/golang-dnstap).
+
+Both take many of the same options, and do all of the same analysis, as `pktvisord` for live capture.
 
 ```
 docker run --rm ns1labs/pktvisor pktvisor-pcap --help
