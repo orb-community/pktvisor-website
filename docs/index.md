@@ -23,9 +23,7 @@ hide:
 
 It is a resource-efficient, side-car style agent built from the ground up to be modular and dynamically controlled in real time via API. Input and processor modules may be dynamically loaded at runtime. Metric output can be visualized both on-node via command-line UI (for a localized, hyper real-time view) as well as centrally collected into industry standard observability stacks like Prometheus and Grafana.
 
-The [input stream system](src/inputs) is designed to _tap into_ data streams, and currently focuses
-on [packet capture](https://en.wikipedia.org/wiki/Packet_analyzer) but will soon support additional taps such as [sFlow](https://en.wikipedia.org/wiki/SFlow) / [Netflow](https://en.wikipedia.org/wiki/NetFlow)
-, [dnstap](https://dnstap.info/), [envoy taps](https://www.envoyproxy.io/docs/envoy/latest/operations/traffic_tapping), and [eBPF](https://ebpf.io/).
+The [input stream system](src/inputs) is designed to _tap into_ data streams—currently on [packet capture](https://en.wikipedia.org/wiki/Packet_analyzer) and [dnstap](https://dnstap.info/) with forthcoming support for [sFlow](https://en.wikipedia.org/wiki/SFlow) / [Netflow](https://en.wikipedia.org/wiki/NetFlow), [envoy taps](https://www.envoyproxy.io/docs/envoy/latest/operations/traffic_tapping), and [eBPF](https://ebpf.io/).
 
 The [stream processor system](src/handlers) includes full application-level analysis and [efficiently](https://en.wikipedia.org/wiki/Streaming_algorithm) summarizes to one-minute buckets of:
 
