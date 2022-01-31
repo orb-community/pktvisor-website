@@ -7,8 +7,7 @@ hide:
 
 ## Docker
 
-Get started quickly with pktvisor via the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector
-agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap file analyzer (`pktvisor-pcap`). You will specify which tool to operate when running the container.
+Get started quickly with pktvisor via the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector agent (`pktvisord`), the command-line UI (`pktvisor-cli`), the pcap file analyzer (`pktvisor-pcap`), and the dnstap file analyzer (`pktvisor-dnstap`). You will specify which tool to operate when running the container.
 
 - *Pull the container*
 
@@ -49,8 +48,8 @@ For example, to run the agent on ethernet interface `eth0`:
 ./pktvisor-x86_64.AppImage pktvisord eth0
 ```
 
-The AppImage contains the collector agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap file
-analyzer (`pktvisor-pcap`). You can specify which tool to run by passing it as the first argument:
+The AppImage contains the collector agent (`pktvisord`), the command-line UI (`pktvisor-cli`), the pcap file
+analyzer (`pktvisor-pcap`), and the dnsap file analyzer (`pktvisor-dnstap`). You can specify which tool to run by passing it as the first argument:
 
 For example, to visualize the running agent started above with the pktvisor command-line UI:
 
