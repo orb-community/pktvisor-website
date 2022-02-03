@@ -7,13 +7,15 @@ hide:
 
 ## Docker
 
-Get started quickly with pktvisor via the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector agent (`pktvisord`), the command-line UI (`pktvisor-cli`), the pcap file analyzer (`pktvisor-pcap`), and the dnstap file analyzer (`pktvisor-dnstap`). You will specify which tool to operate when running the container.
+Get started quickly with pktvisor via the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap and dnstap file analyzer (`pktvisor-reader`). You will specify which tool to operate when running the container.
 
 - *Pull the container*
 
 
         docker pull ns1labs/pktvisor
  
+
+Or use `ns1labs/pktvisor:develop` to get the latest development version.
 
 - *Start the collector agent*
 
