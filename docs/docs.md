@@ -81,7 +81,6 @@ visor:
   # optionally define global configuration (see command line options)
   config:
     verbose: true
-    log_file: /tmp/pktvisor_output.log
   # optionally define taps
   taps:
     default_pcap:
@@ -125,8 +124,7 @@ visor:
 If running in a Docker container, you must mount the configuration file into the container. For example, if the configuration file is on the host at `/local/pktvisor/agent.yaml`, you can mount it into the container and use it with this command:
 
 ```
-docker run -v /local/pktvisor:/usr/local/pktvisor/ --net=host \
-      ns1labs/pktvisor pktvisord --config /usr/local/pktvisor/agent.yaml
+docker run -v /local/pktvisor:/usr/local/pktvisor/ --net=host ns1labs/pktvisor pktvisord --config /usr/local/pktvisor/agent.yaml --admin-api
 ```
 
 
