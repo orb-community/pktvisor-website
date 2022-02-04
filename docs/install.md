@@ -31,11 +31,11 @@ This will start in the background and stay running. Note that the final two argu
 
         docker run -it --rm --net=host ns1labs/pktvisor pktvisor-cli
 
-After the agent is running, you can observe results locally with the included command-line UI. This command will run the UI (`pktvisor-cli`) in the foreground and exit after pressing `Ctrl+C`. It connects to the running agent locally using the built-in [REST API](https://app.swaggerhub.com/apis/ns1labs/pktvisor/3.0.0-oas3).
+After the agent is running, you can observe results locally with the included command-line UI. This command will run the UI (`pktvisor-cli`) in the foreground and exit after pressing `Ctrl+C`. It connects to the running agent locally using the built-in REST API.
 
 ## Linux Static Binary (AppImage, x86_64)
 
-You may also use the Linux static binary, built with [AppImage](https://appimage.org/), which is available for download [on the Releases page](https://github.com/ns1labs/pktvisor/releases). It is designed to work on all modern Linux distributions and does not require installation or any other dependencies.
+You may also use the Linux all-in-one binary, built with [AppImage](https://appimage.org/), which is available for download [on the Releases page](https://github.com/ns1labs/pktvisor/releases). It is designed to work on all modern Linux distributions and does not require installation or any other dependencies.
 
 ```shell
 curl -L http://pktvisor.com/download -o pktvisor-x86_64.AppImage
@@ -88,6 +88,6 @@ chmod +x pktvisor-reader-x86_64
 
 ## Other Platforms
 
-If you are unable to use the Docker container or the Linux binary, then you will have to build your own executable. Please see the [Build](https://github.com/ns1labs/pktvisor#build) section on GitHub.
+We are working on support for additional operating systems, CPU architectures and packaging systems. If you do not see your binary available, please see the [Build](https://github.com/ns1labs/pktvisor#build) section below to build your own.
 
-If you have a preferred installation method for which you would like to see support, [please create an issue](https://github.com/ns1/pktvisor/issues/new).
+If you have a preferred installation method that you would like to see support for, [please create an issue](https://github.com/ns1/pktvisor/issues/new).
