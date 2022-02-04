@@ -15,13 +15,46 @@ We want to hear about your use cases, feature requests, and other feedback. Plea
 
 * Sign up to get pktvisor and Orb [updates](https://resources.ns1.com/get-orb-updates)
 * File an [issue](https://github.com/ns1labs/pktvisor/issues/new)
-* Use our [public work board](https://github.com/ns1labs/pktvisor/projects/1)
-* Use our [public backlog board](https://github.com/ns1labs/pktvisor/projects/2)
+* See existing [issues](https://github.com/ns1labs/pktvisor/issues)
 * Start a [discussion](https://github.com/ns1labs/pktvisor/discussions)
 * Join us on [Slack](https://join.slack.com/t/ns1labs/shared_invite/zt-qqsm5cb4-9fsq1xa~R3h~nX6W0sJzmA)
 * Send mail to [info@pktvisor.dev](mailto:info@pktvisor.dev)
 
 See the [NS1 Contribution Guidelines](https://github.com/ns1/community) for more information.
+
+## Build
+The main code base is written in clean, modern C++. The `pktvisor-cli` command line interface is written in Go. The build system requires CMake and the [Conan](https://conan.io/) package manager system.
+
+pktvisor adheres to [semantic versioning](https://semver.org/).
+
+pktvisor is developed and tested on Linux and OSX. A Windows port is in progress. Both x86_64 and ARM architectures are known to function.
+
+### Dependencies
+* [Conan](https://conan.io/) C++ package manager
+* CMake >= 3.13 (`cmake`)
+* C++ compiler supporting C++17
+
+For the list of packages included by conan, see [conanfile.txt](https://github.com/ns1labs/pktvisor/blob/develop/conanfile.txt).
+
+### Building
+The general build steps are:
+```shell
+# clone the repository
+git clone https://github.com/ns1labs/pktvisor.git
+cd pktvisor
+mkdir build && cd build
+
+# configure and handle dependencies 
+cmake -DCMAKE_BUILD_TYPE=Release ..
+
+# build and run tests
+make all test
+
+# the binaries will be in the build/bin directory
+bin/pktvisord --help
+```
+
+As development environments can vary widely, please see the [Dockerfile](https://github.com/ns1labs/pktvisor/blob/master/docker/Dockerfile) and [Continuous Integration build file](https://github.com/ns1labs/pktvisor/blob/master/.github/workflows/build.yml) for reference.
 
 ## Explore
 
