@@ -21,7 +21,6 @@ or
 ```
 
 ```
-
     Usage:
       pktvisord [options] [IFACE]
       pktvisord (-h | --help)
@@ -29,43 +28,59 @@ or
 
     pktvisord summarizes data streams and exposes a REST API control plane for configuration and metrics.
 
-    IFACE, if specified, is either a network interface or an IP address (4 or 6). If this is specified,
-    a "pcap" input stream will be automatically created, with "net", "dns", and "pcap" handler modules attached.
+    pktvisord operation is configured via Taps and Collection Policies. Taps abstract the process of "tapping into"
+    input streams with templated configuration while Policies use Taps to instantiate and configure Input and Stream
+    Handlers to analyze and summarize stream data, which is then made available for collection via REST API.
+
+    Taps and Collection Policies may be created by passing the appropriate YAML configuration file to
+    --config, and/or by enabling the admin REST API with --admin-api and using the appropriate endpoints.
+
+    Alternatively, for simple use cases you may specify IFACE, which is either a network interface or an
+    IP address (4 or 6). If this is specified, "default" Tap and Collection Policies will be created with
+    a "pcap" input stream on the specified interfaced, along with the built in "net", "dns", and "pcap"
+    Stream Handler modules attached. Note that this feature may be deprecated in the future.
+
+    For more documentation, see https://pktvisor.dev
 
     Base Options:
-      -d                    Daemonize; fork and continue running in the background [default: false]
-      -h --help             Show this screen
-      -v                    Verbose log output
-      --no-track            Don't send lightweight, anonymous usage metrics
-      --version             Show version
+      -d                          Daemonize; fork and continue running in the background [default: false]
+      -h --help                   Show this screen
+      -v                          Verbose log output
+      --no-track                  Don't send lightweight, anonymous usage metrics
+      --version                   Show version
     Web Server Options:
-      -l HOST               Run web server on the given host or IP [default: localhost]
-      -p PORT               Run web server on the given port [default: 10853]
-      --tls                 Enable TLS on the web server
-      --tls-cert FILE       Use given TLS cert. Required if --tls is enabled.
-      --tls-key FILE        Use given TLS private key. Required if --tls is enabled.
-      --admin-api           Enable admin REST API giving complete control plane functionality [default: false]
-                            When not specified, the exposed API is read-only access to summarized metrics.
-                            When specified, write access is enabled for all modules.
+      -l HOST                     Run web server on the given host or IP [default: localhost]
+      -p PORT                     Run web server on the given port [default: 10853]
+      --tls                       Enable TLS on the web server
+      --tls-cert FILE             Use given TLS cert. Required if --tls is enabled.
+      --tls-key FILE              Use given TLS private key. Required if --tls is enabled.
+      --admin-api                 Enable admin REST API giving complete control plane functionality [default: false]
+                                  When not specified, the exposed API is read-only access to module status and metrics.
+                                  When specified, write access is enabled for all modules.
     Geo Options:
-      --geo-city FILE       GeoLite2 City database to use for IP to Geo mapping
-      --geo-asn FILE        GeoLite2 ASN database to use for IP to ASN mapping
+      --geo-city FILE             GeoLite2 City database to use for IP to Geo mapping
+      --geo-asn FILE              GeoLite2 ASN database to use for IP to ASN mapping
     Configuration:
-      --config FILE         Use specified YAML configuration to configure options, Taps, and Collection Policies      
+      --config FILE               Use specified YAML configuration to configure options, Taps, and Collection Policies
+                                  Please see https://pktvisor.dev for more information
+    Modules:
+      --module-list               List all modules which have been loaded (builtin and dynamic).
+      --module-dir DIR            Set module load path. All modules in this directory will be loaded.
     Logging Options:
-      --log-file FILE       Log to the given output file name
-      --syslog              Log to syslog
+      --log-file FILE             Log to the given output file name
+      --syslog                    Log to syslog
     Prometheus Options:
-      --prometheus          Enable native Prometheus metrics at path /metrics
-      --prom-instance ID    Optionally set the 'instance' label to given ID
+      --prometheus                Ignored, Prometheus output always enabled (left for backwards compatibility)
+      --prom-instance ID          Optionally set the 'instance' label to given ID
     Handler Module Defaults:
-      --max-deep-sample N   Never deep sample more than N% of streams (an int between 0 and 100) [default: 100]
-      --periods P           Hold this many 60 second time periods of history in memory [default: 5]
-    pcap Input Module Options:
-      -b BPF                Filter packets using the given tcpdump compatible filter expression. Example: "port 53"
-      -H HOSTSPEC           Specify subnets (comma separated) to consider HOST, in CIDR form. In live capture this /may/ be detected automatically
-                            from capture device but /must/ be specified for pcaps. Example: "10.0.1.0/24,10.0.2.1/32,2001:db8::/64"
-                            Specifying this for live capture will append to any automatic detection.
+      --max-deep-sample N         Never deep sample more than N% of streams (an int between 0 and 100) [default: 100]
+      --periods P                 Hold this many 60 second time periods of history in memory [default: 5]
+    pcap Input Module Options: (applicable to default policy when IFACE is specified only)
+      -b BPF                      Filter packets using the given tcpdump compatible filter expression. Example: "port 53"
+      -H HOSTSPEC                 Specify subnets (comma separated) to consider HOST, in CIDR form. In live capture this
+                                  /may/ be detected automatically from capture device but /must/ be specified for pcaps.
+                                  Example: "10.0.1.0/24,10.0.2.1/32,2001:db8::/64"
+                                  Specifying this for live capture will append to any automatic detection.
 
 ```
 
@@ -87,6 +102,8 @@ visor:
       input_type: pcap
       config:
         iface: eth0
+      filter:
+        bpf: "port 53"          
     unix_dnstap:
       input_type: dnstap
       config:
@@ -108,6 +125,10 @@ visor:
             type: net
           default_dns:
             type: dns
+            config:
+              only_qname_suffix:
+                - ".google.com"
+                - ".ns1.com"
     mytcp:
       kind: collection
       input:
@@ -158,13 +179,13 @@ Usage:
 
 ```
 
-## pcap and dnstap File Analysis
+## File Analysis (pcap and dnstap)
 
 `pktvisor-pcap` and `pktvisor-dnstap` are tools that can statically analyze prerecorded packet capture and dnstap files. 
 
 pcap files can come from many sources, the most famous of which is [tcpdump](https://www.tcpdump.org/). dnstap files can be generated from most DNS server software that support dnstap logging, either directly or using a tool such as [golang-dnstap](https://github.com/dnstap/golang-dnstap).
 
-Both take many of the same options, and do all of the same analysis, as `pktvisord` for live capture.
+Both take many of the same options, and do all of the same analysis, as `pktvisord` for live capture. pcap files may include sFlow capture data.
 
 ```
 docker run --rm ns1labs/pktvisor pktvisor-pcap --help
@@ -274,10 +295,9 @@ curl localhost:10853/api/v1/metrics/bucket/1
 
 This can be done with tools like [telegraf](https://docs.influxdata.com/telegraf/) and
 the [standard HTTP plugin](https://github.com/influxdata/telegraf/blob/release-1.17/plugins/inputs/http/README.md).
-Example telegraf config snippet:
+Example telegraf config snippet for the `default` policy:
 
 ```
-
 [inputs]
 [[inputs.http]]
 urls = [ "http://127.0.0.1:10853/api/v1/metrics/bucket/1",]
@@ -289,30 +309,30 @@ json_time_format = "unix"
 json_string_fields = [
   "dns_*",
   "packets_*",
+  "dhcp_*",
+  "pcap_*",
 ]
 
 [inputs.http.tags]
 t = "pktvisor"
 interval = "60"
-
 ```
 
 ### Prometheus Metrics
 
-`pktvisord` also has native Prometheus support, which you can enable by passing `--prometheus`. The metrics are
-available for collection at the standard `/metrics` endpoint.
+`pktvisord` has native Prometheus support. The `default` policy metrics are available for collection at the standard `/metrics` endpoint, or use `/api/v1/policies/__all/metrics/prometheus` to collect metrics from all policies.
 
 ```shell
-$ ./pktvisor-x86_64.AppImage pktvisord -d --prometheus eth0
+$ ./pktvisor-x86_64.AppImage pktvisord -d eth0
 $ curl localhost:10853/metrics
 # HELP dns_wire_packets_udp Total DNS wire packets received over UDP (ingress and egress)
 # TYPE dns_wire_packets_udp gauge
-dns_wire_packets_udp{instance="node"} 28
+dns_wire_packets_udp{instance="node",policy="default"} 28
 # HELP dns_rates_total Rate of all DNS wire packets (combined ingress and egress) per second
 # TYPE dns_rates_total summary
-dns_rates_total{instance="node",quantile="0.5"} 0
-dns_rates_total{instance="node",quantile="0.9"} 4
-dns_rates_total{instance="node",quantile="0.95"} 4
+dns_rates_total{instance="node",policy="default",quantile="0.5"} 0
+dns_rates_total{instance="node",policy="default",quantile="0.9"} 4
+dns_rates_total{instance="node",policy="default",quantile="0.95"} 4
 ...
 ```
 
@@ -320,6 +340,9 @@ You can set the `instance` label by passing `--prom-instance ID`
 
 If you are interested in centralized collection
 using [remote write](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage), including to cloud providers, there is a [docker image available](https://hub.docker.com/r/ns1labs/pktvisor-prom-write) to make this easy. See [centralized_collection/prometheus](https://github.com/ns1labs/pktvisor/tree/develop/centralized_collection/prometheus) for more information.
+
+Also see [getorb.io](getorb.io) for information on connecting pktvisor agents to the Orb observability platform.
+
 
 ## REST API
 
