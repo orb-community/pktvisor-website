@@ -33,7 +33,7 @@ This will start in the background and stay running. Note that the final two argu
 
 After the agent is running, you can observe results locally with the included command-line UI. This command will run the UI (`pktvisor-cli`) in the foreground and exit after pressing `Ctrl+C`. It connects to the running agent locally using the built-in [REST API](https://app.swaggerhub.com/apis/ns1labs/pktvisor/3.0.0-oas3).
 
-### Linux Static Binary (AppImage, x86_64)
+## Linux Static Binary (AppImage, x86_64)
 
 You may also use the Linux static binary, built with [AppImage](https://appimage.org/), which is available for download [on the Releases page](https://github.com/ns1labs/pktvisor/releases). It is designed to work on all modern Linux distributions and does not require installation or any other dependencies.
 
