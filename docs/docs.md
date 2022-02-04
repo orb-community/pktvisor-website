@@ -169,13 +169,15 @@ Usage:
   pktvisor-cli -h
   pktvisor-cli --version
 
-  -H string
-    	Query pktvisord metrics webserver on the given host (default "localhost")
-  -h	Show help
-  -p int
-    	Query pktvisord metrics webserver on the given port (default 10853)
-  -version
-    	Show client version
+Options:
+  -p PORT               Query pktvisord metrics webserver on the given port [default: 10853]
+  -H HOST               Query pktvisord metrics webserver on the given host [default: localhost]
+  -P POLICY             pktvisor policy to query [default: default]
+  --tls	                Use TLS to communicate with pktvisord metrics webserver
+  --tls-noverify        Do not verify TLS certificate
+  -h                    Show this screen
+  --version             Show client version
+
 
 ```
 
