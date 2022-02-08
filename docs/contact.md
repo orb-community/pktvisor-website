@@ -23,7 +23,7 @@ We want to hear about your use cases, feature requests, and other feedback. Plea
 See the [NS1 Contribution Guidelines](https://github.com/ns1/community) for more information.
 
 ## Build
-The main code base is written in clean, modern C++. The `pktvisor-cli` command line interface is written in Go. The build system requires CMake and the [Conan](https://conan.io/) package manager system.
+The main code base is written in clean, modern C++. The `pktvisor-cli` command-line interface is written in Go. The build system requires CMake and the [Conan](https://conan.io/) package manager system.
 
 pktvisor adheres to [semantic versioning](https://semver.org/).
 
