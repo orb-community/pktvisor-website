@@ -85,7 +85,7 @@ or
 ```
 
 ## Configuration File Usage
-Configure `pktvisord` at startup by YAML configuration file with the `--config option`. The configuration file can configure all options available on the command line and define [Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md) and [Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md). All sections are optional.
+Configure `pktvisord` at startup by YAML configuration file with the `--config` option. The configuration file can configure all options available on the command line and define [Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md) and [Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md). All sections are optional.
 
 Note that Policies and Taps may also be maintained in real-time via [REST API](https://github.com/ns1labs/pktvisor#rest-api).
 
@@ -183,31 +183,31 @@ Options:
 
 ## File Analysis (pcap and dnstap)
 
-`pktvisor-pcap` and `pktvisor-dnstap` are tools that can statically analyze prerecorded packet capture and dnstap files. 
+`pktvisor-reader is a tool that can statically analyze prerecorded packet capture and dnstap files. 
 
 pcap files can come from many sources, the most famous of which is [tcpdump](https://www.tcpdump.org/). dnstap files can be generated from most DNS server software that support dnstap logging, either directly or using a tool such as [golang-dnstap](https://github.com/dnstap/golang-dnstap).
 
 Both take many of the same options, and do all of the same analysis, as `pktvisord` for live capture. pcap files may include sFlow capture data.
 
 ```
-docker run --rm ns1labs/pktvisor pktvisor-pcap --help
+docker run --rm ns1labs/pktvisor pktvisor-reader --help
 ```
 
 ```shell
-./pktvisor-x86_64.AppImage pktvisor-pcap --help
+./pktvisor-x86_64.AppImage pktvisor-reader --help
 ```
 
 ```
-
     Usage:
-      pktvisor-pcap [options] PCAP
-      pktvisor-pcap (-h | --help)
-      pktvisor-pcap --version
+      pktvisor-reader [options] FILE
+      pktvisor-reader (-h | --help)
+      pktvisor-reader --version
 
-    Summarize a pcap file. The result will be written to stdout in JSON format, while console logs will be printed
+    Summarize a network (pcap, dnstap) file. The result will be written to stdout in JSON format, while console logs will be printed
     to stderr.
 
     Options:
+      -i INPUT              Input type (pcap|dnstap|sflow). If not set, default is pcap input
       --max-deep-sample N   Never deep sample more than N% of streams (an int between 0 and 100) [default: 100]
       --periods P           Hold this many 60 second time periods of history in memory. Use 1 to summarize all data. [default: 5]
       -h --help             Show this screen
@@ -219,13 +219,12 @@ docker run --rm ns1labs/pktvisor pktvisor-pcap --help
       -H HOSTSPEC           Specify subnets (comma separated) to consider HOST, in CIDR form. In live capture this /may/ be detected automatically
                             from capture device but /must/ be specified for pcaps. Example: "10.0.1.0/24,10.0.2.1/32,2001:db8::/64"
                             Specifying this for live capture will append to any automatic detection.
-
 ```
 
 You can use the docker container by passing in a volume referencing the directory containing the pcap file. The standard output will contain the JSON summarization output, which you can capture or pipe into other tools, for example:
-```
 
-$ docker run --rm -v /pktvisor/src/tests/fixtures:/pcaps ns1labs/pktvisor pktvisor-pcap /pcaps/dns_ipv4_udp.pcap | jq .
+```
+$ docker run --rm -v /pktvisor/src/tests/fixtures:/pcaps ns1labs/pktvisor pktvisor-reader /pcaps/dns_ipv4_udp.pcap | jq .
 
 [2021-03-11 18:45:04.572] [pktvisor] [info] Load input plugin: PcapInputModulePlugin dev.visor.module.input/1.0
 [2021-03-11 18:45:04.573] [pktvisor] [info] Load handler plugin: DnsHandler dev.visor.module.handler/1.0
@@ -255,8 +254,7 @@ processed 140 packets
 The AppImage can access local files as any normal binary:
 
 ```
-
-$ ./pktvisor-x86_64.AppImage pktvisor-pcap /pcaps/dns_ipv4_udp.pcap | jq .
+$ ./pktvisor-x86_64.AppImage pktvisor-reader /pcaps/dns_ipv4_udp.pcap | jq .
 
 [2021-03-11 18:45:04.572] [pktvisor] [info] Load input plugin: PcapInputModulePlugin dev.visor.module.input/1.0
 [2021-03-11 18:45:04.573] [pktvisor] [info] Load handler plugin: DnsHandler dev.visor.module.handler/1.0
@@ -378,6 +376,6 @@ The same command with AppImage and logging to syslog:
 
 ## Further Documentation
 
-We recognize the value of first-class documentation, and we are improving and augmenting ours including expanded and updated REST API docs, internal documentation for developers of input and handler modules (and those who want to contribute to pktvisor), and a user manual.
+We recognize the value of first-class documentation. We are working on further documentation including expanded and updated REST API documentation, internal documentation for developers of input and handler modules (and those who want to contribute to pktvisor), and a user manual.
 
 Please [contact us](https://pktvisor.dev/contact/) if you have any questions on installation, use, or development.
