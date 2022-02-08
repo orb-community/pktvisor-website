@@ -1,4 +1,4 @@
-site_name: pktvisor network observability
+site_name: pktvisor edge observability agent
 theme:
   name: material
   favicon: img/ORB-logo-ring.png
@@ -8,10 +8,21 @@ theme:
     - navigation.instant
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.top
     - search.suggest
   icon:
     repo: fontawesome/brands/github
 markdown_extensions:
+  - abbr
+  - pymdownx.tabbed
+  - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
   - toc:
       permalink: true
 plugins:
@@ -23,7 +34,7 @@ nav:
   - Documentation: 'docs.md'
   - Community: 'contact.md'
 repo_url: https://github.com/ns1labs/pktvisor
-repo_name: ns1labs/pktvisor
+edit_uri: edit/main/docs
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -37,4 +48,4 @@ extra:
 google_analytics:
   - UA-41778111-8
   - auto
-copyright: Copyright &copy; 2021 <a href="https://ns1.com/labs">NS1</a>
+copyright: Copyright &copy; 2022 <a href="https://ns1.com/labs">NS1</a>

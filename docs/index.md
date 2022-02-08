@@ -6,40 +6,42 @@ hide:
 ---
 
 <h1></h1>
-<img src="img/pktvisor-header.png" alt="Orb" width="400"/>
-<img src="img/pktvisor-diagram.png" alt="Orb" width="500"/>
+<img src="img/pktvisor-header.png" alt="pktvisor" width="400"/>
+![pktvisor Overview](img/pktvisor-diagram.png){ align=right width="500" }
 
-# Open-source observability agent
+# Open-source network observability agent
 
-[Get Started with pktvisor](install/)
+[Get Started with pktvisor](install/){ .md-button .md-button--primary }
+
 
 ***
 
-## What is pktvisor?
+# What is pktvisor?
+**pktvisor** (pronounced "packet visor") is an **observability agent** for analyzing high volume, information dense network data streams and extracting actionable insights directly from the edge.
 
+# How is pktvisor different?
+It is a resource-efficient agent built from the ground up to be **modular**, **dynamically controlled in real time** and produce **"small data"** metric and log output. 
 
+# Why pktvisor?
+Metric output can be visualized and actioned **on-node** as well as **centrally collected** into modern observability stacks.
 
-**pktvisor** (pronounced "packet visor") is an **observability agent** for analyzing high volume, information dense network data streams and extracting actionable insights directly from the edge while integrating tightly with modern observability stacks.
+# What questions does pktvisor help me answer?
+pktvisor uses <a href="https://en.wikipedia.org/wiki/Streaming_algorithm">streaming algorithms</a> to **analyze in real time**, providing metrics which let you answer questions such as:
 
-It is resource-efficient and built from the ground up to be modular and dynamically controlled in real time via API and YAML policies. Input and analyzer modules may be dynamically loaded at runtime. Metric output can be visualized both on-node via command-line UI (for a localized, hyper real-time view) as well as centrally collected into industry standard observability stacks like Prometheus and Grafana.
+ * What are the rates and frequent items across common network traffic dimensions?
+ * How many unique IP addresses (cardinality) have we seen in the last minute?
+ * What are the percentiles of DNS transaction times? 
+ * What's the histogram of response payload sizes?
+ * What is still querying that DNS record that was deleted?
+ * From what ASN and Geo regions is traffic coming from?
+ * Is this traffic spike malicious or legitimate? Is this a random label attack? Is it widely distributed? IPv4? UDP? 
 
-The [input stream system](src/inputs) is designed to _tap into_ data streams—currently on [packet capture](https://en.wikipedia.org/wiki/Packet_analyzer) and [dnstap](https://dnstap.info/) with forthcoming support for [sFlow](https://en.wikipedia.org/wiki/SFlow) / [Netflow](https://en.wikipedia.org/wiki/NetFlow), [envoy taps](https://www.envoyproxy.io/docs/envoy/latest/operations/traffic_tapping), and [eBPF](https://ebpf.io/).
+# How can I centrally control and collect pktvisor metrics?
+Although pktvisor can be used stand-alone, it is designed to be run at scale as part of the <a href="https://getorb.io"><img src="img/ORB-logo-black@3x.png" alt="pktvisor" width="100"/></a>
+<a href="https://getorb.io">Observability Platform</a>.
+***
 
-The [stream analyzer system](src/handlers) includes full application-level analysis and [efficiently](https://en.wikipedia.org/wiki/Streaming_algorithm) summarizes to one-minute buckets of:
+# Backed by NS1
+**pktvisor** was born at [NS1 Labs](https://ns1.com/labs), where we're
+committed to making [open source, dynamic edge observability a reality](https://ns1.com/blog/orb-a-new-paradigm-for-dynamic-edge-observability).
 
-* Counters
-* Histograms and Quantiles
-* Timers and Rates
-* Heavy Hitters/Frequent Items/Top N
-* Set Cardinality
-* GeoIP/ASN
-
-Please see the list of [current metrics](https://github.com/ns1labs/pktvisor/wiki/Current-Metrics) or the [sample metric output](https://github.com/ns1labs/pktvisor/wiki/Sample-pktvisor-Output-Data).
-
-pktvisor has its origins in observability of critical internet infrastructure in support of DDoS protection, traffic engineering, and ongoing operations.
-
-These screenshots display both the [command line](golang/) and [centralized views](centralized_collection/) of the [Network](src/handlers/net) and [DNS](src/handlers/dns) stream processors, and the types of summary information provided:
-
-![Image 1 of Grafana Dash](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor-grafana-screenshot1.png)
-![Image of CLI UI](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor3-cli-ui-screenshot.png)
-![Image 2 of Grafana Dash](https://raw.githubusercontent.com/ns1labs/pktvisor/develop/docs/images/pktvisor-grafana-screenshot2.png)
