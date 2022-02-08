@@ -15,7 +15,7 @@ Get started quickly with pktvisor via the [public docker image](https://hub.dock
         docker pull ns1labs/pktvisor
  
 
-Or use `ns1labs/pktvisor:develop` to get the latest development version.
+Or use `ns1labs/pktvisor:latest-develop` to get the latest development version.
 
 - *Start the collector agent*
 
@@ -88,6 +88,6 @@ chmod +x pktvisor-reader-x86_64
 
 ## Other Platforms
 
-We are working on support for additional operating systems, CPU architectures and packaging systems. If you do not see your binary available, please see the [Build](https://github.com/ns1labs/pktvisor#build) section below to build your own.
+We are working on support for additional operating systems, CPU architectures, and packaging systems. If you do not see your binary available, please see the [Build](https://github.com/ns1labs/pktvisor#build) section to build your own.
 
 If you have a preferred installation method that you would like to see support for, [please create an issue](https://github.com/ns1/pktvisor/issues/new).
