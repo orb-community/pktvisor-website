@@ -183,7 +183,7 @@ Options:
 
 ## File Analysis (pcap and dnstap)
 
-`pktvisor-reader is a tool that can statically analyze prerecorded packet capture and dnstap files. 
+`pktvisor-reader` is a tool that can statically analyze prerecorded packet capture and dnstap files. 
 
 pcap files can come from many sources, the most famous of which is [tcpdump](https://www.tcpdump.org/). dnstap files can be generated from most DNS server software that support dnstap logging, either directly or using a tool such as [golang-dnstap](https://github.com/dnstap/golang-dnstap).
 
