@@ -33,7 +33,7 @@ nav:
   - Installation: 'install.md'
   - Documentation: 'docs.md'
   - Community: 'contact.md'
-repo_url: https://github.com/ns1labs/pktvisor-website
+repo_url: https://github.com/ns1labs/pktvisor
 edit_uri: edit/main/docs
 extra:
   social:
