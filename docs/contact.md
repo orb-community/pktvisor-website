@@ -5,7 +5,7 @@ hide:
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 ## Contribute
-**pktvisor** is an open-source project founded at [NS1 Labs](https://ns1.com/labs). Work with us on [GitHub](https://github.com/ns1labs/pktvisor) and star the project to show your interest.
+**pktvisor** is an open source project founded at [NS1 Labs](https://ns1.com/labs). Work with us on [GitHub](https://github.com/ns1labs/pktvisor) and star the project to show your interest.
 
 <a class="github-button" href="https://github.com/ns1labs/pktvisor" data-size="large" aria-label="Star ns1labs/pktvisor on GitHub">Star on GitHub</a>
 
@@ -59,6 +59,7 @@ As development environments can vary widely, please see the [Dockerfile](https:/
 ## Explore
 
 ### Articles
+* [Orb Data Sheet: Actionable Edge Observability](https://ns1.com/writable/resources/orb-actionable-edge-observability/ns1-ds-orb.pdf)
 * [Using DNS to Minimize Cyber Threat Exposure](https://ns1.com/blog/using-dns-to-minimize-cyber-threat-exposure)
 * [Deep Network Traffic Observability with Pktvisor and Prometheus](https://ns1.com/blog/deep-network-traffic-observability-pktvisor-prometheus)
 * [Q4 2021 Update on NS1 Labs: pktvisor, Orb, NetBox Cloud](https://ns1.com/blog/an-update-on-open-source-innovation-at-ns1-labs?utm_content=buffer1816e&utm_medium=social&utm_source=twitter&utm_campaign=nstw)
