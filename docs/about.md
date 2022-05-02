@@ -12,7 +12,7 @@ By efficiently summarizing and collecting key metrics at all of your edge locati
 
 
 # pktvisor + Orb
-The resource-efficient pktvisor agent performs edge analysis on network data streams. Via the open-source [Orb](https://getorb.io/), you can decide what data to extract from which agents.
+The resource-efficient pktvisor agent performs edge analysis on network data streams. Via the open source [Orb](https://getorb.io/), you can decide what data to extract from which agents.
 
 This combination allows you to:
 
@@ -20,7 +20,7 @@ This combination allows you to:
 - Perform centralized fleet management, allowing you to configure heartbeats, tagging, and grouping for each of the pktvisor agents
 - Orchestrate data-set policies that specify the type of data to extract from each agent
 
-In terms of metrics, pktvisor has built-in support for DNS, DHCP, and L2/L3 network data via packet capture, dnstap, sFlow, among other input methods and is easily extendable 
+In terms of metrics, pktvisor has built-in support for DNS, DHCP, and L2/L3 network data via [packet capture](https://en.wikipedia.org/wiki/Packet_analyzer), [dnstap](https://dnstap.info/), [sFlow](https://en.wikipedia.org/wiki/SFlow), [NetFlow](https://en.wikipedia.org/wiki/NetFlow)/[IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), among other input methods and is easily extendable 
 for other protocols.
  
 For a complete list of **metrics currently collected by pktvisor**, look [here](https://github.com/ns1labs/pktvisor/wiki/Current-Metrics).
