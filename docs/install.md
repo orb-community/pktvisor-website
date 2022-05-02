@@ -7,7 +7,7 @@ hide:
 
 ## Docker
 
-Get started quickly with pktvisor via the [public docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap and dnstap file analyzer (`pktvisor-reader`). You will specify which tool to operate when running the container.
+Get started quickly with pktvisor via the [public Docker image](https://hub.docker.com/r/ns1labs/pktvisor). The image contains the collector agent (`pktvisord`), the command-line UI (`pktvisor-cli`), and the pcap and dnstap file analyzer (`pktvisor-reader`). You will specify which tool to operate when running the container.
 
 - *Pull the container*
 
@@ -22,7 +22,7 @@ Or use `ns1labs/pktvisor:latest-develop` to get the latest development version.
 
         docker run --net=host -d ns1labs/pktvisor pktvisord eth0
 
-This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires docker host networking_ to observe traffic outside the container, and that [currently only Linux supports host networking](https://docs.docker.com/network/host/).
+This will start in the background and stay running. Note that the final two arguments select `pktvisord` agent and the `eth0` ethernet interface for packet capture. You may substitute `eth0` for any known interface on your device. _Note that this step requires Docker host networking_ to observe traffic outside the container, and that [currently only Linux supports host networking](https://docs.docker.com/network/host/).
 
  If the container does not stay running, check the `docker logs` output.
 
@@ -57,9 +57,9 @@ For example, to visualize the running agent started above with the pktvisor comm
 ./pktvisor-x86_64.AppImage pktvisor-cli
 ```
 
-Note that when running the AppImage version of the agent, you may want to use the `-d` argument to daemonize (run in the background), and either the `--log-file` or `--syslog` argument to record logs.
+When running the AppImage version of the agent, you may want to use the `-d` argument to daemonize (run in the background), and either the `--log-file` or `--syslog` argument to record logs.
 
-Also see [Advanced Agent Example](https://pktvisor.dev/docs/#advanced-agent-example).
+Also see the [Advanced Agent Example](https://pktvisor.dev/docs/#advanced-agent-example).
 
 ## Linux Static Binaries (Stand Alone, x86_64)
 Finally, pktvisor also provides statically linked, dependency-free Linux binaries for each individual pktvisor tool (`pktvisord`, `pktvisor-cli`, and `pktvisor-reader`). These are the smallest, most compact versions of the binaries.
@@ -90,4 +90,4 @@ chmod +x pktvisor-reader-x86_64
 
 We are working on support for additional operating systems, CPU architectures, and packaging systems. If you do not see your binary available, please see the [Build](https://github.com/ns1labs/pktvisor#build) section to build your own.
 
-If you have a preferred installation method that you would like to see support for, [please create an issue](https://github.com/ns1/pktvisor/issues/new).
+If you have a preferred installation method you would like to see supported, [please create an issue](https://github.com/ns1/pktvisor/issues/new).
