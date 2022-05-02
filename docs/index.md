@@ -9,23 +9,23 @@ hide:
 <img src="img/pktvisor-header.png" alt="pktvisor" width="400"/>
 ![pktvisor Overview](img/pktvisor-diagram.png){ align=right width="500" }
 
-# Open source, dynamic network observability agent
+# Open source, network observability agent for analysis at the edge
 
 [Get Started with pktvisor](install/){ .md-button .md-button--primary }
 
 
 ***
 
-# What is pktvisor?
+## What is pktvisor?
 **pktvisor** (pronounced "packet visor") is an **observability agent** for analyzing high volume, information dense network data streams and extracting actionable insights **directly from the edge**.
 
-# How is pktvisor different?
+## How is pktvisor different?
 It is a resource-efficient agent built from the ground up to be **modular**, **dynamically controlled in real time** and produce **"small data"** metric and log output. 
 
-# Why pktvisor?
+## Why pktvisor?
 Metric output can be visualized and actioned **on-node** as well as **centrally collected** into modern observability stacks.
 
-# What questions does pktvisor answer?
+## What questions does pktvisor answer?
 pktvisor uses <a href="https://en.wikipedia.org/wiki/Streaming_algorithm">streaming algorithms</a> to **analyze in real time**, providing metrics which let you answer questions such as:
 
  * What are the rates and frequent items across common network traffic dimensions?
@@ -36,7 +36,7 @@ pktvisor uses <a href="https://en.wikipedia.org/wiki/Streaming_algorithm">stream
  * From what ASN and Geo regions is traffic coming?
  * Is this traffic spike malicious or legitimate? Is this a random label attack? Is it widely distributed? IPv4? UDP? 
 
-# How can I centrally control and collect pktvisor metrics?
+## How can I centrally control and collect pktvisor metrics?
 Although pktvisor can be used stand-alone, it is designed to be run at scale as part of the <a href="https://getorb.io"><img src="img/ORB-logo-black@3x.png" alt="pktvisor" width="100"/></a>
 <a href="https://getorb.io">Observability Platform</a>.
 ***
