@@ -85,9 +85,9 @@ or
 ```
 
 ## Configuration File Usage
-Configure `pktvisord` at startup by YAML configuration file with the `--config` option. The configuration file can configure all options available on the command line and define [Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md) and [Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md). All sections are optional.
+Configure `pktvisord` at startup by YAML configuration file with the `--config` option. The configuration file can configure all options available on the command line and define *[Policies](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-76-collection-policies.md)* and *[Taps](https://github.com/ns1labs/pktvisor/blob/develop/RFCs/2021-04-16-75-taps.md)*. All sections are optional.
 
-Note that Policies and Taps may also be maintained in real-time via [REST API](https://github.com/ns1labs/pktvisor#rest-api).
+Note that *Policies* and *Taps* may also be maintained in real-time via [REST API](https://github.com/ns1labs/pktvisor#rest-api).
 
 ```
 version: "1.0"
@@ -151,7 +151,7 @@ docker run -v /local/pktvisor:/usr/local/pktvisor/ --net=host ns1labs/pktvisor p
 
 ## Command-Line UI Usage
 
-The command-line UI (`pktvisor-cli`) connects directly to a pktvisord agent to visualize the real-time stream
+The command-line UI (`pktvisor-cli`) connects directly to a `pktvisord` agent to visualize the real-time stream
 summarization, which is by default a sliding 5-minute time window. It can also connect to an agent running on a remote host.
 
 ```
@@ -187,7 +187,7 @@ Options:
 
 pcap files can come from many sources, the most famous of which is [tcpdump](https://www.tcpdump.org/). dnstap files can be generated from most DNS server software that support dnstap logging, either directly or using a tool such as [golang-dnstap](https://github.com/dnstap/golang-dnstap).
 
-Both take many of the same options, and do all of the same analysis, as `pktvisord` for live capture. pcap files may include sFlow capture data.
+Both take many of the same options, and do all of the same analysis, as `pktvisord` for live capture. pcap files may include Flow capture data.
 
 ```
 docker run --rm ns1labs/pktvisor pktvisor-reader --help
@@ -207,7 +207,7 @@ docker run --rm ns1labs/pktvisor pktvisor-reader --help
     to stderr.
 
     Options:
-      -i INPUT              Input type (pcap|dnstap|sflow). If not set, default is pcap input
+      -i INPUT              Input type (pcap|dnstap|sflow|netflow). If not set, default is pcap input
       --max-deep-sample N   Never deep sample more than N% of streams (an int between 0 and 100) [default: 100]
       --periods P           Hold this many 60 second time periods of history in memory. Use 1 to summarize all data. [default: 5]
       -h --help             Show this screen
@@ -221,7 +221,7 @@ docker run --rm ns1labs/pktvisor pktvisor-reader --help
                             Specifying this for live capture will append to any automatic detection.
 ```
 
-You can use the docker container by passing in a volume referencing the directory containing the pcap file. The standard output will contain the JSON summarization output, which you can capture or pipe into other tools, for example:
+You can use the Docker container by passing in a volume referencing the directory containing the pcap file. The standard output will contain the JSON summarization output, which you can capture or pipe into other tools, for example:
 
 ```
 $ docker run --rm -v /pktvisor/src/tests/fixtures:/pcaps ns1labs/pktvisor pktvisor-reader /pcaps/dns_ipv4_udp.pcap | jq .
@@ -287,7 +287,7 @@ processed 140 packets
 
 The metrics are available from the agent in JSON format via the [REST API](#rest-api).
 
-For most use cases, you will want to collect the most recent full 1-minute bucket, once per minute:
+For most use cases, you will want to collect the most recent full 1-minute bucket:
 
 ```
 curl localhost:10853/api/v1/metrics/bucket/1
@@ -336,12 +336,12 @@ dns_rates_total{instance="node",policy="default",quantile="0.95"} 4
 ...
 ```
 
-You can set the `instance` label by passing `--prom-instance ID`
+You can set the `instance` label by passing `--prom-instance ID`.
 
 If you are interested in centralized collection
-using [remote write](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage), including to cloud providers, there is a [docker image available](https://hub.docker.com/r/ns1labs/pktvisor-prom-write) to make this easy. See [centralized_collection/prometheus](https://github.com/ns1labs/pktvisor/tree/develop/centralized_collection/prometheus) for more information.
+using [remote write](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage), including to cloud providers, there is a [Docker image available](https://hub.docker.com/r/ns1labs/pktvisor-prom-write) to make this easy. See [centralized_collection/prometheus](https://github.com/ns1labs/pktvisor/tree/develop/centralized_collection/prometheus) for more information.
 
-Also see [getorb.io](getorb.io) for information on connecting pktvisor agents to the Orb observability platform.
+Also check out [Orb's site](https://getorb.io/) for information on connecting pktvisor agents to the Orb observability platform.
 
 
 ## REST API
