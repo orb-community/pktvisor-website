@@ -1,8 +1,5 @@
----
-hide:
-- navigation
----
-# The Story
+
+## The story
 Born at [NS1 Labs](https://ns1.com/labs), pktvisor has its origins in observability of critical internet infrastructure in support of DDoS protection, traffic
 engineering, and ongoing operations. 
 
@@ -11,7 +8,7 @@ NS1 created **pktvisor** to address its own need for more visibility across its 
 By efficiently summarizing and collecting key metrics at all of your edge locations, you gain a deep understanding of traffic patterns in real time, enabling rich visualization and fast automation which further increase resiliency and performance.
 
 
-# pktvisor + Orb
+## pktvisor + Orb
 The resource-efficient pktvisor agent performs edge analysis on network data streams. Via the open source [Orb](https://getorb.io/), you can decide what data to extract from which agents.
 
 This combination allows you to:
