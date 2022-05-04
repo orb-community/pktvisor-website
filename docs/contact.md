@@ -1,6 +1,6 @@
 ---
 hide:
-- navigation
+- tags
 ---
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
