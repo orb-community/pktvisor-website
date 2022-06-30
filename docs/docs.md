@@ -338,7 +338,7 @@ You can set the `instance` label by passing `--prom-instance ID`.
 If you are interested in centralized collection
 using [remote write](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage), including to cloud providers, there is a [Docker image available](https://hub.docker.com/r/ns1labs/pktvisor-prom-write) to make this easy. See [centralized_collection/prometheus](https://github.com/ns1labs/pktvisor/tree/develop/centralized_collection/prometheus) for more information.
 
-Also check out [Orb's site](https://getorb.io/) for information on connecting pktvisor agents to the Orb observability platform.
+Also check out [Orb's site](https://orb.community/) for information on connecting pktvisor agents to the Orb observability platform.
 
 
 ## REST API

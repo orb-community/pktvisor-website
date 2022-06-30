@@ -37,8 +37,8 @@ pktvisor uses <a href="https://en.wikipedia.org/wiki/Streaming_algorithm">stream
  * Is this traffic spike malicious or legitimate? Is this a random label attack? Is it widely distributed? IPv4? UDP? 
 
 ## How can I centrally control and collect pktvisor metrics?
-Although pktvisor can be used stand-alone, it is designed to be run at scale as part of the <a href="https://getorb.io"><img src="img/ORB-logo-black@3x.png" alt="pktvisor" width="100"/></a>
-<a href="https://getorb.io">Observability Platform</a>.
+Although pktvisor can be used stand-alone, it is designed to be run at scale as part of the <a href="https://orb.community"><img src="img/ORB-logo-black@3x.png" alt="pktvisor" width="100"/></a>
+<a href="https://orb.community">Observability Platform</a>.
 ***
 
 # Backed by NS1
